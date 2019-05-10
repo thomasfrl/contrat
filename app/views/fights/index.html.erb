@@ -1,27 +1,19 @@
-<p id="notice"><%= notice %></p>
-
 <h1>Fights</h1>
-
-<table>
-  <thead>
-    <tr>
-      <th>Winner</th>
-      <th>Loser</th>
-      <th colspan="1"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @fights.each do |fight| %>
-      <tr>
-        <td><%= fight.winner %></td>
-        <td><%= fight.loser %></td>
-        <td><%= link_to 'Show', fight %></td>
-      </tr>
+<div class="row">
+  <div class="col-lg-3 col-sm-6 mb-5">
+    <%= link_to new_fight_path do  %>
+      <div class="card card-fighter no-border shadow shadow--hover">
+        <div class="card-img-top text-center p-2">
+          <%= image_tag "fight.jpg", alt: 'fight', class: "img-fluid"%>
+          <div class="carousel-caption">
+            <h3 style="text-shadow: 2px 2px 2px black;">New fight</h3>
+          </div>
+        </div>
+      </div>
     <% end %>
-  </tbody>
-</table>
+  </div>
 
-<br>
-
-<%= link_to 'New Fight', new_fight_path %>
+  <%@fights.each do |fight|%>
+    <%= render "fights/card", fight: fight %>
+  <%end%>
+</div>
