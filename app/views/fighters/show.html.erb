@@ -15,3 +15,13 @@
     <%= link_to 'Back', fighters_path %>
   </div>
 </div>
+
+<div class="card card-fighter no-border shadow shadow--hover m-5">
+  <h5 class="card-header">Statistics</h5>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Number of fights : <%= @fights.size %></li>
+    <li class="list-group-item">Number of fights won : <%= @won_fights.size %></li>
+    <li class="list-group-item">Number of fights lost : <%= @lost_fights.size %></li>
+    <li class="list-group-item">Success rate : <%= (@won_fights.size.to_f/@fights.size.to_f*100).to_i %>%</li>
+  </ul>
+</div>
