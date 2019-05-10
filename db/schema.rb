@@ -29,9 +29,9 @@ ActiveRecord::Schema.define(version: 2019_05_10_101436) do
     t.bigint "fighter_2_id"
     t.bigint "fighter1_weapon_id"
     t.bigint "fighter2_weapon_id"
-    t.integer "winner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "winner"
     t.index ["fighter1_weapon_id"], name: "index_fights_on_fighter1_weapon_id"
     t.index ["fighter2_weapon_id"], name: "index_fights_on_fighter2_weapon_id"
     t.index ["fighter_1_id"], name: "index_fights_on_fighter_1_id"
