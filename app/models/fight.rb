@@ -6,7 +6,11 @@ class Fight < ApplicationRecord
   belongs_to :fighter2_weapon, class_name: "Weapon"
 
   def loser
-    
+    self.win == 1 ? self.fighter_2 : self.fighter_1
+  end
+
+  def winner
+    self.win == 1 ? self.fighter_1 : self.fighter_2
   end
 
   private
@@ -18,13 +22,13 @@ class Fight < ApplicationRecord
       life_2 -= self.fighter_1.attack + fighter1_weapon.attack_bonus - fighter2_weapon.defense_bonus
     end
     if life_1 <= 0 && life_2 <= 0
-      self.update(winner: 1)
+      self.update(win: 1)
       self.fighter_1.update(xp: self.fighter_1.xp+1)
     elsif life_1 <= 0 
-      self.update(winner: 2)
+      self.update(win: 2)
       self.fighter_2.update(xp: self.fighter_2.xp+1)
     elsif life_2 <= 0 
-      self.update(winner: 1)
+      self.update(win: 1)
       self.fighter_1.update(xp: self.fighter_1.xp+1)
     end
   end

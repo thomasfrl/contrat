@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_101436) do
+ActiveRecord::Schema.define(version: 2019_05_10_173632) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_101436) do
     t.bigint "fighter2_weapon_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "winner"
+    t.integer "win"
     t.index ["fighter1_weapon_id"], name: "index_fights_on_fighter1_weapon_id"
     t.index ["fighter2_weapon_id"], name: "index_fights_on_fighter2_weapon_id"
     t.index ["fighter_1_id"], name: "index_fights_on_fighter_1_id"
