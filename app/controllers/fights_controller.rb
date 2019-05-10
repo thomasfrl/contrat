@@ -1,5 +1,5 @@
 class FightsController < ApplicationController
-  before_action :set_fight, only: [:show, :edit, :update, :destroy]
+  before_action :set_fight, only: [:show]
 
   # GET /fights
   # GET /fights.json
@@ -15,10 +15,6 @@ class FightsController < ApplicationController
   # GET /fights/new
   def new
     @fight = Fight.new
-  end
-
-  # GET /fights/1/edit
-  def edit
   end
 
   # POST /fights
@@ -37,30 +33,6 @@ class FightsController < ApplicationController
     end
   end
 
-  # PATCH/PUT /fights/1
-  # PATCH/PUT /fights/1.json
-  def update
-    respond_to do |format|
-      if @fight.update(fight_params)
-        format.html { redirect_to @fight, notice: 'Fight was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fight }
-      else
-        format.html { render :edit }
-        format.json { render json: @fight.errors, status: :unprocessable_entity }
-      end
-    end
-  end
-
-  # DELETE /fights/1
-  # DELETE /fights/1.json
-  def destroy
-    @fight.destroy
-    respond_to do |format|
-      format.html { redirect_to fights_url, notice: 'Fight was successfully destroyed.' }
-      format.json { head :no_content }
-    end
-  end
-
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_fight
@@ -69,6 +41,6 @@ class FightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fight_params
-      params.require(:fight).permit(:winner_id, :loser_id)
+      params.require(:fight).permit(:fighter_1_id, :fighter_2_id, :fighter1_weapon_id, :fighter2_weapon_id )
     end
 end

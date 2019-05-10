@@ -12,13 +12,21 @@
   <% end %>
 
   <div class="field">
-    <%= form.label :winner_id %>
-    <%= form.text_field :winner_id %>
+    <%= form.label :fighter_1%>
+    <%= form.select(:fighter_1_id, Fighter.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
+
+    <%= form.label :fighter1_weapon%>
+    <%= form.select(:fighter1_weapon_id, Weapon.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
+
   </div>
 
   <div class="field">
-    <%= form.label :loser_id %>
-    <%= form.text_field :loser_id %>
+    <%= form.label :fighter_2%>
+    <%= form.select(:fighter_2_id, Fighter.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
+
+    <%= form.label :fighter2_weapon%>
+    <%= form.select(:fighter2_weapon_id, Weapon.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
+
   </div>
 
   <div class="actions">
