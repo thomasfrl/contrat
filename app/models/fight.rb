@@ -14,27 +14,13 @@ class Fight < ApplicationRecord
     end
     if self.fighter_1.life <= 0 && self.fighter_2.life <= 0
       self.update(winner: 1)
-      puts self.fighter_1.xp
-
-      xp = self.fighter_1.xp +1
-      puts xp
-      self.fighter_1.update(xp: xp)
+      self.fighter_1.update(xp: self.fighter_1.xp+1)
     elsif self.fighter_1.life <= 0 
       self.update(winner: 2)
-      puts self.fighter_2.xp
-      xp = self.fighter_2.xp +1
-      puts xp
-
-      self.fighter_2.update(xp: xp)
+      self.fighter_2.update(xp: self.fighter_2.xp+1)
     elsif self.fighter_2.life <= 0 
       self.update(winner: 1)
-      puts self.fighter_1.xp
-
-      xp = self.fighter_1.xp +1
-
-      puts xp
-
-      self.fighter_1.update(xp: xp)
+      self.fighter_1.update(xp: self.fighter_1.xp+1)
     end
   end
 end
