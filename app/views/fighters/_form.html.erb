@@ -13,22 +13,22 @@
 
   <div class="field">
     <%= form.label :name %>
-    <%= form.text_field :name %>
+    <%= form.text_field :name, class: 'form-control'%>
   </div>
 
   <div class="field">
     <%= form.label :life %>
-    <%= form.number_field :life %>
+    <%= form.number_field :life, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :attack %>
-    <%= form.number_field :attack %>
+    <%= form.number_field :attack, class: 'form-control' %>
   </div>
 
   <div class="field">
     <%= form.label :xp %>
-    <%= form.number_field :xp %>
+    <%= form.number_field :xp, class: 'form-control' %>
   </div>
 
   <div class="field">
@@ -37,6 +37,6 @@
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Save", class: "btn btn-sm btn-primary" %>
   </div>
 <% end %>

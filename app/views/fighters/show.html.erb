@@ -1,32 +1,17 @@
-<p id="notice"><%= notice %></p>
-
-<div class="mb-5 imgProd">
-    <%if @fighter.avatar.attached?%>
-        <%= image_tag @fighter.avatar, alt: 'avatar', height: 550, width: 550%>
-    <%else%>
-        <img alt="Image placeholder" src="/assets/img/brand/logo_1.png" class="img-fluid">
-    <%end%>
+<div class="card card-fighter no-border shadow shadow--hover m-5">
+  <div class="card-img-top text-center p-2">
+    <%= image_tag @fighter.avatar, alt: 'fighter'%>
+  </div>
+  <div class="card-body pt-0 text-center">
+    <h2 class="card-title"> <%= @fighter.name %></h2>               
+  </div>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">Life : <%= @fighter.life %></li>
+    <li class="list-group-item">Attack : <%= @fighter.attack %></li>
+    <li class="list-group-item">Experience : <%= @fighter.xp %></li>
+  </ul>
+  <div class="card-footer row justify-content-around">
+    <%= link_to 'Edit', edit_fighter_path(@fighter) %>
+    <%= link_to 'Back', fighters_path %>
+  </div>
 </div>
-
-<p>
-  <strong>Name:</strong>
-  <%= @fighter.name %>
-</p>
-
-<p>
-  <strong>Life:</strong>
-  <%= @fighter.life %>
-</p>
-
-<p>
-  <strong>Attack:</strong>
-  <%= @fighter.attack %>
-</p>
-
-<p>
-  <strong>Xp:</strong>
-  <%= @fighter.xp %>
-</p>
-
-<%= link_to 'Edit', edit_fighter_path(@fighter) %> |
-<%= link_to 'Back', fighters_path %>
