@@ -25,29 +25,26 @@ class FightersController < ApplicationController
   # POST /fighters.json
   def create
     @fighter = Fighter.new(fighter_params)
-
-    respond_to do |format|
-      if @fighter.save
-        format.html { redirect_to @fighter, notice: 'Fighter was successfully created.' }
-        format.json { render :show, status: :created, location: @fighter }
-      else
-        format.html { render :new }
-        format.json { render json: @fighter.errors, status: :unprocessable_entity }
+    if @fighter.save
+      if params[:fighter][:avatar]
+        @fighter.avatar.attach(params[:fighter][:avatar])
+      else 
+        @fighter.avatar.attach(io: File.open("app/assets/images/fighter/default.png"), filename:"default.png")
       end
+      redirect_to @fighter, notice: 'Fighter was successfully created.' 
+    else
+      render :new 
     end
   end
 
   # PATCH/PUT /fighters/1
   # PATCH/PUT /fighters/1.json
   def update
-    respond_to do |format|
-      if @fighter.update(fighter_params)
-        format.html { redirect_to @fighter, notice: 'Fighter was successfully updated.' }
-        format.json { render :show, status: :ok, location: @fighter }
-      else
-        format.html { render :edit }
-        format.json { render json: @fighter.errors, status: :unprocessable_entity }
-      end
+    if @fighter.update(fighter_params)
+      @fighter.avatar.attach(params[:fighter][:avatar]) if params[:fighter][:avatar]
+      redirect_to @fighter, notice: 'Fighter was successfully updated.' 
+    else
+        render :edit
     end
   end
 

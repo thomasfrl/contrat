@@ -1,5 +1,13 @@
 <p id="notice"><%= notice %></p>
 
+<div class="mb-5 imgProd">
+    <%if @fighter.avatar.attached?%>
+        <%= image_tag @fighter.avatar, alt: 'avatar', height: 550, width: 550%>
+    <%else%>
+        <img alt="Image placeholder" src="/assets/img/brand/logo_1.png" class="img-fluid">
+    <%end%>
+</div>
+
 <p>
   <strong>Name:</strong>
   <%= @fighter.name %>

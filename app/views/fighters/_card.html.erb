@@ -1,0 +1,38 @@
+<div class="col-lg-3 col-sm-6 col-sm-6 mb-5">
+    <div class="card card-product no-border shadow shadow--hover">
+
+        <div class="card-image">
+            <%if product.avatar.attached?%>
+                <%= link_to product_path(product.id) do  %>
+                    <%= image_tag product.avatar, alt: 'cat', height: 208, width: 208%>
+                <% end %>
+            <%else%>
+                <%= link_to product_path(product.id) do %>
+                    <%= image_tag "/assets/img/brand/logo_1.png", alt: "Image placeholder", :class => "img-fluid" %>
+                <% end %>
+            <%end%>
+            <span class="ribbon ribbon-right ribbon-primary rounded-circle">New</span>
+        </div>
+        <div class="card-body pt-0 text-center">
+            <%= link_to product_path(product.id), :class => "card-title" do%>
+                <%= product.title %>
+            <% end %>
+
+            <span class="card-price">$<%=product.price%> USD</span>
+            <div class="product-colors mt-3">
+                <a href="#" style="background-color: #59ad46;" data-toggle="tooltip" data-original-title="Green"></a>
+                <a href="#" style="background-color: #04050a;" data-toggle="tooltip" data-original-title="Black"></a>
+                <a href="#" style="background-color: #62aedd;" data-toggle="tooltip" data-original-title="Blueish"></a>
+                <a href="#" style="background-color: #e84385;" data-toggle="tooltip" data-original-title="Pink"></a>
+            </div>
+        </div>
+        <div class="card-product-actions" data-animation-in="slideInLeft" data-animation-out="slideOutLeft">
+            <button type="button" class="btn-product-action" data-toggle="tooltip" data-original-title="Add to cart">
+                <i class="fas fa-shopping-bag"></i>
+            </button>
+            <button type="button" class="btn-product-action" data-toggle="tooltip" data-original-title="Wishlist">
+                <i class="fas fa-heart"></i>
+            </button>
+        </div>
+    </div>
+</div>
