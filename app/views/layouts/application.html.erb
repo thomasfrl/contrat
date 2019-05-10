@@ -10,6 +10,11 @@
   </head>
 
   <body>
-    <%= yield %>
+    <%= render "layouts/flashes"%>
+    <section class="slice slice-lg" id="sct-products">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </section>
   </body>
 </html>

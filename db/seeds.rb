@@ -10,8 +10,18 @@ Fight.destroy_all
 Weapon.destroy_all
 Fighter.destroy_all
 
-10.times do 
+def get_random_image_avatar
+  image_path_prefix = "app/assets/images/fighter/avatar/"
+  image_files = Dir.glob("#{image_path_prefix}*")
+  image_select = image_files.sample
+  [image_select, image_select.split(image_path_prefix)[1]]
+end
+
+10.times do
+  img = get_random_image_avatar
   fighter = Fighter.create!(name: Faker::Name.first_name, life: rand(7)+2, attack: rand(3)+1, xp: 0)
+  fighter.avatar.attach(io: File.open(img[0]), filename: img[1])
+
 end
 5.times do 
   weapon = Weapon.create!(name: Faker::Name.first_name, defense_bonus: rand(2), attack_bonus: rand(2)+1)
