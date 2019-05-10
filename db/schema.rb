@@ -19,7 +19,7 @@ ActiveRecord::Schema.define(version: 2019_05_10_101436) do
     t.string "name"
     t.integer "life"
     t.integer "attack"
-    t.integer "xp"
+    t.integer "xp", default: 0
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
