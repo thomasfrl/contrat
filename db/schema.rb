@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_10_101637) do
+ActiveRecord::Schema.define(version: 2019_05_10_101436) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -25,23 +25,17 @@ ActiveRecord::Schema.define(version: 2019_05_10_101637) do
   end
 
   create_table "fights", force: :cascade do |t|
-    t.bigint "winner_id"
-    t.bigint "loser_id"
+    t.bigint "fighter_1_id"
+    t.bigint "fighter_2_id"
+    t.bigint "fighter1_weapon_id"
+    t.bigint "fighter2_weapon_id"
+    t.integer "winner"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["loser_id"], name: "index_fights_on_loser_id"
-    t.index ["winner_id"], name: "index_fights_on_winner_id"
-  end
-
-  create_table "registrations", force: :cascade do |t|
-    t.bigint "weapon_id"
-    t.bigint "fight_id"
-    t.bigint "fighter_id"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["fight_id"], name: "index_registrations_on_fight_id"
-    t.index ["fighter_id"], name: "index_registrations_on_fighter_id"
-    t.index ["weapon_id"], name: "index_registrations_on_weapon_id"
+    t.index ["fighter1_weapon_id"], name: "index_fights_on_fighter1_weapon_id"
+    t.index ["fighter2_weapon_id"], name: "index_fights_on_fighter2_weapon_id"
+    t.index ["fighter_1_id"], name: "index_fights_on_fighter_1_id"
+    t.index ["fighter_2_id"], name: "index_fights_on_fighter_2_id"
   end
 
   create_table "weapons", force: :cascade do |t|
@@ -52,7 +46,4 @@ ActiveRecord::Schema.define(version: 2019_05_10_101637) do
     t.datetime "updated_at", null: false
   end
 
-  add_foreign_key "registrations", "fighters"
-  add_foreign_key "registrations", "fights"
-  add_foreign_key "registrations", "weapons"
 end
