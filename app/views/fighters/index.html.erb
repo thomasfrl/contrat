@@ -1,21 +1,5 @@
 <h1>Fighters</h1>
 <div class="row">
-  <div class="col-lg-3 col-sm-6 col-sm-6 mb-5">
-    <%= link_to new_fighter_path do  %>
-      <div class="card card-fighter no-border shadow shadow--hover">
-        <div class="card-img-top text-center p-2">
-          <%= image_tag "fighter/default.png", alt: 'fighter', height: 208%>
-        </div>
-        <div class="card-body pt-0 text-center">
-          <h5 class="card-title"> New fighter</h5>               
-        </div>
-        <div class="card-footer text-muted text-center">
-          Create a new fighter
-        </div>
-      </div>
-    <% end %>
-  </div>
-
   <%@fighters.each do |fighter|%>
     <%= render "fighters/card", fighter: fighter %>
   <%end%>
