@@ -24,10 +24,15 @@ end
 
 end
 5.times do 
-  weapon = Weapon.create!(name: Faker::Name.first_name, defense_bonus: rand(2), attack_bonus: rand(2)+1)
+  Weapon.create!(name: "Sword", defense_bonus: 0, attack_bonus: 2)
+  Weapon.create!(name: "Shield", defense_bonus: 1, attack_bonus: 0)
+  Weapon.create!(name: "Helmet", defense_bonus: 1, attack_bonus: 0)
+  Weapon.create!(name: "Armor", defense_bonus: 1, attack_bonus: 0)
+  Weapon.create!(name: "Ax", defense_bonus: 0, attack_bonus: 1)
+  Weapon.create!(name: "Spear", defense_bonus: 0, attack_bonus: 1)
 end
 Fighter.all.each do |fighter|
-  5.times do |i|
+  2.times do |i|
     f = Fight.create!(fighter_1: fighter, fighter_2: Fighter.where.not(id: fighter.id).sample, fighter1_weapon: Weapon.all.sample, fighter2_weapon: Weapon.all.sample)
   end
 end
