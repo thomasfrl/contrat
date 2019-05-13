@@ -25,3 +25,12 @@
     <li class="list-group-item">Success rate : <%= (@won_fights.size.to_f/@fights.size.to_f*100).to_i %>%</li>
   </ul>
 </div>
+
+<div class="card card-fighter no-border shadow shadow--hover m-5">
+  <h5 class="card-header">His/Her fights :</h5>
+  <div class="card-body row">
+    <%@fights.each do |fight|%>
+        <%= render "fights/card", fight: fight %>
+    <%end%>
+  </div>
+</div>
