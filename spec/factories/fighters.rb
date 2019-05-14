@@ -1,8 +1,8 @@
 FactoryBot.define do
   factory :fighter do
-    name { "MyString" }
-    life { 1 }
-    attack { 1 }
-    xp { 1 }
+    name { Faker::Name.first_name }
+    life { rand(7)+2 }
+    attack { rand(3)+1 }
+    xp { rand(6) }
   end
 end
