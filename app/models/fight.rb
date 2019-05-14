@@ -65,21 +65,21 @@ class Fight < ApplicationRecord
       end    
       if life_1 <= 0 && life_2 <= 0
         self.update(win: 1)
-        self.fighter_1.update(xp: self.fighter_1.xp+1)
+        self.fighter_1.update_xp
       elsif life_1 <= 0 
         self.update(win: 2)
-        self.fighter_2.update(xp: self.fighter_2.xp+1)
+        self.fighter_2.update_xp
       elsif life_2 <= 0 
         self.update(win: 1)
-        self.fighter_1.update(xp: self.fighter_1.xp+1)
+        self.fighter_1.update_xp
       end
     else
       if attack_diff_fighter_1 >= attack_diff_fighter_2
         self.update(win: 1)
-        self.fighter_1.update(xp: self.fighter_1.xp+1)
+        self.fighter_1.update_xp
       else
         self.update(win: 2)
-        self.fighter_2.update(xp: self.fighter_2.xp+1)
+        self.fighter_2.update_xp
       end
     end
   end

@@ -26,7 +26,7 @@ class Fighter < ApplicationRecord
   def update_xp
     xp = self.xp
     if xp > 0 && xp%3 == 0 #every 4 xp => new level and +1 in life and attack
-      self.update(xp: xp+1, life: self.life +1, attack: self.attack +1)
+      self.update(xp: xp+1, life: self.life+1, attack: self.attack+1)
     else 
       self.update(xp: xp+1)
     end

@@ -26,8 +26,8 @@ class FightsController < ApplicationController
   # POST /fights.json
   def create
     @fight = Fight.new(fight_params)
-    @fight.weapons_fighter1_ids = params[:weapon1_ids]
-    @fight.weapons_fighter2_ids = params[:weapon2_ids]
+    @fight.weapons_fighter1_ids = params[:weapon1_ids] ||[]
+    @fight.weapons_fighter2_ids = params[:weapon2_ids] || []
     if @fight.save
       redirect_to @fight, notice: 'Fight was successfully created.' 
     else
