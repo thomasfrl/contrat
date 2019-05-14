@@ -3,6 +3,12 @@ class Fight < ApplicationRecord
   belongs_to :fighter_1, class_name: "Fighter"
   belongs_to :fighter_2, class_name: "Fighter"
 
+  validate :different_participant
+
+  def different_participant
+    errors.add(:fighter_2_id, "can't be the same as Fighter 1") if fighter_1_id == fighter_2_id
+  end
+
   def weapons_fighter1
     self.weapons_fighter1_ids.map {|id| Weapon.find(id)}
   end

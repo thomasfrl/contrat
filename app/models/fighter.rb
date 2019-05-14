@@ -1,8 +1,8 @@
 class Fighter < ApplicationRecord
 
   validates :name, presence: true,  uniqueness: {case_sensitive: false}
-  validates :attack, presence: true, numericality: {greater_than: 0}
-  validates :life, presence: true, numericality: {greater_than: 0}
+  validates :attack, presence: true, numericality: {greater_than: 0, less_than: 10}
+  validates :life, presence: true, numericality: {greater_than: 0, less_than: 10}
   validates :xp, presence: true, numericality: {greater_than_or_equal_to: 0}
 
 

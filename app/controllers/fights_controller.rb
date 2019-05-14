@@ -31,7 +31,8 @@ class FightsController < ApplicationController
     if @fight.save
       redirect_to @fight, notice: 'Fight was successfully created.' 
     else
-      render json: @fight.errors, status: :unprocessable_entity 
+      @weapons = Weapon.all
+      render :new 
     end
   end
 
