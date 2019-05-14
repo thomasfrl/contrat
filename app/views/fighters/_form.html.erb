@@ -11,32 +11,33 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field pb-3">
     <%= form.label :name %>
     <%= form.text_field :name, class: 'form-control'%>
   </div>
 
-  <div class="field">
+  <div class="field pb-3">
     <%= form.label :life %>
     <%= form.number_field :life, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field pb-3">
     <%= form.label :attack %>
     <%= form.number_field :attack, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field pb-3">
     <%= form.label :xp %>
     <%= form.number_field :xp, class: 'form-control' %>
   </div>
 
-  <div class="field">
+  <div class="field pb-3">
     <%= form.label :avatar %>
     <%= form.file_field :avatar %>
   </div>
 
-  <div class="actions">
+  <div class="actions row justify-content-between p-3">
     <%= form.submit "Save", class: "btn btn-sm btn-primary" %>
+    <%= link_to 'Back', fighters_path, class: "btn btn-sm btn-primary" %>
   </div>
 <% end %>

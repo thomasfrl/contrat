@@ -11,8 +11,9 @@
     <li class="list-group-item">Experience : <%= @fighter.xp %></li>
   </ul>
   <div class="card-footer row justify-content-around">
-    <%= link_to 'Edit', edit_fighter_path(@fighter) %>
     <%= link_to 'Back', fighters_path %>
+    <%= link_to 'Edit', edit_fighter_path(@fighter) %>
+    <%= link_to 'Delete', fighter_path(@fighter), method: :delete, data: { confirm: 'Are you sure?' } %>
   </div>
 </div>
 
@@ -22,7 +23,9 @@
     <li class="list-group-item">Number of fights : <%= @fights.size %></li>
     <li class="list-group-item">Number of fights won : <%= @won_fights.size %></li>
     <li class="list-group-item">Number of fights lost : <%= @lost_fights.size %></li>
-    <li class="list-group-item">Success rate : <%= (@won_fights.size.to_f/@fights.size.to_f*100).to_i %>%</li>
+    <% unless @fights.size == 0 %>
+      <li class="list-group-item">Success rate : <%= (@won_fights.size.to_f/@fights.size.to_f*100).to_i %>%</li>      
+    <% end %>      
   </ul>
 </div>
 

@@ -1,25 +1,12 @@
 <div class="card card-fighter no-border shadow shadow--hover m-5 p-5">
-    <div class="row align-items-center">
-        <h1 class="col-6">Editing <%= @fighter.name %></h1>
-        <div class="card-img-top p-2 col-6 col-sm-12">
-            <%= image_tag @fighter.avatar, alt: 'fighter'%>
-        </div>
+  <h1 class="text-center">Editing <%= @fighter.name %></h1>
+  <div class="row">
+    <div class="flex-grow-1">
+      <%= render 'form', fighter: @fighter %>
     </div>
 
-    <%= render 'form', fighter: @fighter %>
-
-    <%= link_to 'Show', @fighter %> |
-    <%= link_to 'Back', fighters_path %>
-</div>
-
-<div class="card card-fighter no-border shadow shadow--hover m-5 p-3">
-  <img class="card-img m-auto" src="<%=rails_blob_url(@fighter.avatar)%>" alt="Card image" style="width: 50%">
-  <div class="card-img-overlay d-flex flex-column justify-content-end" style="text-shadow: 2px 2px 2px white;">
-    <h1>Editing <%= @fighter.name %></h1>
-
-    <%= render 'form', fighter: @fighter %>
-
-    <%= link_to 'Show', @fighter %> |
-    <%= link_to 'Back', fighters_path %>
+    <div class="px-3">
+      <%= image_tag @fighter.avatar, alt: 'fighter', style: "width: 22em"%>
+    </div>
   </div>
 </div>
