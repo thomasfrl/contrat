@@ -36,7 +36,9 @@ puts "weapons create"
 
 Fighter.all.each do |fighter|
   2.times do |i|
-    f = Fight.create!(fighter_1: fighter, fighter_2: Fighter.where.not(id: fighter.id).sample, fighter1_weapon: Weapon.all.sample, fighter2_weapon: Weapon.all.sample)
+    weapons_fighter1 = [Weapon.ids.sample]
+    weapons_fighter2 = [Weapon.ids.sample]
+    f = Fight.create!(fighter_1: fighter, fighter_2: Fighter.where.not(id: fighter.id).sample, weapons_fighter1_ids: weapons_fighter1, weapons_fighter2_ids: weapons_fighter2)
   end
 end
 puts "fights create"

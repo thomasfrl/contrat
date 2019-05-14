@@ -12,6 +12,8 @@ class FightsController < ApplicationController
   def show
     @winner = @fight.winner
     @loser = @fight.loser
+    @weapons_winner = @fight.weapons_winner
+    @weapons_loser = @fight.weapons_loser
   end
 
   # GET /fights/new

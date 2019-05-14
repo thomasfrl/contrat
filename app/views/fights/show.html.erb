@@ -12,7 +12,8 @@
   </div>
   <hr class="m-0"> 
   <div class="d-flex">
-    <% [@winner, @loser].each do |fighter| %>
+    <% [@winner,@loser].each do |fighter| %>
+
       <div class="col-6 p-0 border-right">
         <div class="card-body text-center">
           <h2 class="card-title"> <%= fighter.name %></h2>               
@@ -22,7 +23,15 @@
           <li class="list-group-item">Attack : <%= fighter.attack %></li>
           <li class="list-group-item">Experience : <%= fighter.xp %></li>
           <li class="list-group-item">
-            Equiped with : <%= fighter.xp %>
+            Equiped with :
+            <% if fighter == @winner %>
+              <% weapons = @weapons_winner %>
+            <% else %>
+              <% weapons = @weapons_loser %>
+            <% end %> 
+            <% weapons.each do |weapon| %>
+              <%= weapon.name %>,
+            <% end %>
           </li>
         </ul>
       </div>
