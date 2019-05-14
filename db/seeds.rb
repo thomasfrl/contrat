@@ -23,17 +23,23 @@ end
   fighter.avatar.attach(io: File.open(img[0]), filename: img[1])
 
 end
-5.times do 
-  Weapon.create!(name: "Sword", defense_bonus: 0, attack_bonus: 2)
-  Weapon.create!(name: "Shield", defense_bonus: 1, attack_bonus: 0)
-  Weapon.create!(name: "Helmet", defense_bonus: 1, attack_bonus: 0)
-  Weapon.create!(name: "Armor", defense_bonus: 1, attack_bonus: 0)
-  Weapon.create!(name: "Ax", defense_bonus: 0, attack_bonus: 1)
-  Weapon.create!(name: "Spear", defense_bonus: 0, attack_bonus: 1)
-end
+puts "fighters create"
+
+Weapon.create!(name: "Sword", defense_bonus: 0, attack_bonus: 2)
+Weapon.create!(name: "Shield", defense_bonus: 1, attack_bonus: 0)
+Weapon.create!(name: "Helmet", defense_bonus: 1, attack_bonus: 0)
+Weapon.create!(name: "Armor", defense_bonus: 1, attack_bonus: 0)
+Weapon.create!(name: "Ax", defense_bonus: 0, attack_bonus: 1)
+Weapon.create!(name: "Spear", defense_bonus: 0, attack_bonus: 1)
+puts "weapons create"
+
+
 Fighter.all.each do |fighter|
   2.times do |i|
     f = Fight.create!(fighter_1: fighter, fighter_2: Fighter.where.not(id: fighter.id).sample, fighter1_weapon: Weapon.all.sample, fighter2_weapon: Weapon.all.sample)
   end
 end
+puts "fights create"
+
+
 

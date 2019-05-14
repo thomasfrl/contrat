@@ -10,11 +10,14 @@ class FightsController < ApplicationController
   # GET /fights/1
   # GET /fights/1.json
   def show
+    @winner = @fight.winner
+    @loser = @fight.loser
   end
 
   # GET /fights/new
   def new
     @fight = Fight.new
+    @weapons = Weapon.all
   end
 
   # POST /fights

@@ -10,7 +10,7 @@
     <li class="list-group-item">Attack : <%= @fighter.attack %></li>
     <li class="list-group-item">Experience : <%= @fighter.xp %></li>
   </ul>
-  <div class="card-footer row justify-content-around">
+  <div class="card-footer d-flex justify-content-around">
     <%= link_to 'Back', fighters_path %>
     <%= link_to 'Edit', edit_fighter_path(@fighter) %>
     <%= link_to 'Delete', fighter_path(@fighter), method: :delete, data: { confirm: 'Are you sure?' } %>

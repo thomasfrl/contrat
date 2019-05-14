@@ -10,26 +10,51 @@
       </ul>
     </div>
   <% end %>
+  
+  <div class="form-group border p-2">
 
-  <div class="field">
-    <%= form.label :fighter_1%>
-    <%= form.select(:fighter_1_id, Fighter.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
+    <div class="field mb-2">
+      <%= label_tag "Fighter 1 :" %>
+      <%= form.select(:fighter_1_id, Fighter.all.collect {|u| [u.name, u.id]}, :prompt => 'Select', class: 'form-control') %>
+    </div>
 
-    <%= form.label :fighter1_weapon%>
-    <%= form.select(:fighter1_weapon_id, Weapon.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
+    <div class="field">
+      <%= label_tag "Weapons :" %>
+      <div class="form-group d-flex ">
+        <% @weapons.each do |weapon| %>
+          <div class="p-1">
+            <%= check_box_tag("weapon1_ids[]" , weapon.id, false, id: "weapon1_ids_#{weapon.id}") %>
+            <%= label_tag weapon.name %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
+
+  </div>
+  
+  <div class="form-group border p-2">
+    <div class="field mb-2">
+      <%= label_tag "Fighter 2 :" %>
+      <%= form.select(:fighter_2_id, Fighter.all.collect {|u| [u.name, u.id]}, :prompt => 'Select', class: 'form-control') %>
+    </div>
+
+    <div class="field">
+      <%= label_tag "Weapons :" %>
+      <div class="form-group d-flex ">
+        <% @weapons.each do |weapon| %>
+          <div class="p-1">
+            <%= check_box_tag("weapon2_ids[]" , weapon.id, false, id: "weapon2_ids_#{weapon.id}") %>
+            <%= label_tag weapon.name %>
+          </div>  
+        <% end %>
+      </div>
+    </div>
 
   </div>
 
-  <div class="field">
-    <%= form.label :fighter_2%>
-    <%= form.select(:fighter_2_id, Fighter.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
-
-    <%= form.label :fighter2_weapon%>
-    <%= form.select(:fighter2_weapon_id, Weapon.all.collect {|u| [u.name, u.id]}, :prompt => 'Select') %>
-
+  <div class="actions row justify-content-between p-3">
+    <%= form.submit "Save", class: "btn btn-sm btn-primary" %>
+    <%= link_to 'Back', root_path, class: "btn btn-sm btn-primary" %>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
-  </div>
 <% end %>
