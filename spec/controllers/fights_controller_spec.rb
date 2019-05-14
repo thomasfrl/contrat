@@ -64,13 +64,6 @@ RSpec.describe FightsController, type: :controller do
     end
   end
 
-  describe "GET #edit" do
-    it "returns a success response" do
-      fight = Fight.create! valid_attributes
-      get :edit, params: {id: fight.to_param}, session: valid_session
-      expect(response).to be_successful
-    end
-  end
 
   describe "POST #create" do
     context "with valid params" do
@@ -93,49 +86,4 @@ RSpec.describe FightsController, type: :controller do
       end
     end
   end
-
-  describe "PUT #update" do
-    context "with valid params" do
-      let(:new_attributes) {
-        skip("Add a hash of attributes valid for your model")
-      }
-
-      it "updates the requested fight" do
-        fight = Fight.create! valid_attributes
-        put :update, params: {id: fight.to_param, fight: new_attributes}, session: valid_session
-        fight.reload
-        skip("Add assertions for updated state")
-      end
-
-      it "redirects to the fight" do
-        fight = Fight.create! valid_attributes
-        put :update, params: {id: fight.to_param, fight: valid_attributes}, session: valid_session
-        expect(response).to redirect_to(fight)
-      end
-    end
-
-    context "with invalid params" do
-      it "returns a success response (i.e. to display the 'edit' template)" do
-        fight = Fight.create! valid_attributes
-        put :update, params: {id: fight.to_param, fight: invalid_attributes}, session: valid_session
-        expect(response).to be_successful
-      end
-    end
-  end
-
-  describe "DELETE #destroy" do
-    it "destroys the requested fight" do
-      fight = Fight.create! valid_attributes
-      expect {
-        delete :destroy, params: {id: fight.to_param}, session: valid_session
-      }.to change(Fight, :count).by(-1)
-    end
-
-    it "redirects to the fights list" do
-      fight = Fight.create! valid_attributes
-      delete :destroy, params: {id: fight.to_param}, session: valid_session
-      expect(response).to redirect_to(fights_url)
-    end
-  end
-
 end
