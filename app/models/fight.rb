@@ -56,19 +56,31 @@ class Fight < ApplicationRecord
   def who_won
     life_1 = self.fighter_1.life
     life_2 = self.fighter_2.life
-    while life_1 > 0 && life_2 > 0 do
-      life_1 -= self.fighter_2.attack + self.fighter2_total_attack - self.fighter1_total_defense
-      life_2 -= self.fighter_1.attack + self.fighter1_total_attack - self.fighter2_total_defense
-    end
-    if life_1 <= 0 && life_2 <= 0
-      self.update(win: 1)
-      self.fighter_1.update(xp: self.fighter_1.xp+1)
-    elsif life_1 <= 0 
-      self.update(win: 2)
-      self.fighter_2.update(xp: self.fighter_2.xp+1)
-    elsif life_2 <= 0 
-      self.update(win: 1)
-      self.fighter_1.update(xp: self.fighter_1.xp+1)
+    attack_diff_fighter_1 = [self.fighter_1.attack + self.fighter1_total_attack - self.fighter2_total_defense,0].max
+    attack_diff_fighter_2 = [self.fighter_2.attack + self.fighter2_total_attack - self.fighter1_total_defense,0].max
+    if attack_diff_fighter_1 != 0 && attack_diff_fighter_2 !=0
+      while life_1 > 0 && life_2 > 0 do
+        life_1 -= attack_diff_fighter_2
+        life_2 -= attack_diff_fighter_1
+      end    
+      if life_1 <= 0 && life_2 <= 0
+        self.update(win: 1)
+        self.fighter_1.update(xp: self.fighter_1.xp+1)
+      elsif life_1 <= 0 
+        self.update(win: 2)
+        self.fighter_2.update(xp: self.fighter_2.xp+1)
+      elsif life_2 <= 0 
+        self.update(win: 1)
+        self.fighter_1.update(xp: self.fighter_1.xp+1)
+      end
+    else
+      if attack_diff_fighter_1 >= attack_diff_fighter_2
+        self.update(win: 1)
+        self.fighter_1.update(xp: self.fighter_1.xp+1)
+      else
+        self.update(win: 2)
+        self.fighter_2.update(xp: self.fighter_2.xp+1)
+      end
     end
   end
 end
