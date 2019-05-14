@@ -26,15 +26,12 @@ class FightsController < ApplicationController
   # POST /fights.json
   def create
     @fight = Fight.new(fight_params)
-
-    respond_to do |format|
-      if @fight.save
-        format.html { redirect_to @fight, notice: 'Fight was successfully created.' }
-        format.json { render :show, status: :created, location: @fight }
-      else
-        format.html { render :new }
-        format.json { render json: @fight.errors, status: :unprocessable_entity }
-      end
+    @fight.weapons_fighter1_ids = params[:weapon1_ids]
+    @fight.weapons_fighter2_ids = params[:weapon2_ids]
+    if @fight.save
+      redirect_to @fight, notice: 'Fight was successfully created.' 
+    else
+      render json: @fight.errors, status: :unprocessable_entity 
     end
   end
 
@@ -46,6 +43,6 @@ class FightsController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def fight_params
-      params.require(:fight).permit(:fighter_1_id, :fighter_2_id, :fighter1_weapon_id, :fighter2_weapon_id )
+      params.require(:fight).permit(:fighter_1_id, :fighter_2_id)
     end
 end
