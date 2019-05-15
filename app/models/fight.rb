@@ -2,6 +2,25 @@ class Fight < ApplicationRecord
   after_create :who_won
   belongs_to :fighter_1, class_name: "Fighter"
   belongs_to :fighter_2, class_name: "Fighter"
+  validate :weapons_1_ids
+
+  def weapons_1_ids
+    unless weapons_fighter1_ids.empty? 
+      if weapons_fighter1_ids.detect{|id| !Weapon.ids.include?(id)}
+        errors.add(:weapons_fighter1_ids, :invalid)
+      end
+    end
+  end
+
+  validate :weapons_2_ids
+
+  def weapons_2_ids
+    unless weapons_fighter2_ids.empty?
+      if weapons_fighter2_ids.detect{|id| !Weapon.ids.include?(id)}
+        errors.add(:weapons_fighter2_ids, :invalid)
+      end
+    end
+  end
 
   validate :different_participant
 

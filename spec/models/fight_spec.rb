@@ -49,7 +49,7 @@ RSpec.describe Fight, type: :model do
         bad_fight = FactoryBot.build(:fight, weapons_fighter1_ids: [-5.2])
         bad_fight2 = FactoryBot.build(:fight, weapons_fighter2_ids: [-5.2])
         expect(bad_fight).not_to be_valid
-        expect(bad_fight.errors.include?(:weapons_fighter2_ids)).to eq(true)
+        expect(bad_fight.errors.include?(:weapons_fighter1_ids)).to eq(true)
         expect(bad_fight2).not_to be_valid
         expect(bad_fight2.errors.include?(:weapons_fighter2_ids)).to eq(true)
       end
