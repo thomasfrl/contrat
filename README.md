@@ -1,24 +1,28 @@
 # README
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Hello
 
-Things you may want to cover:
+This is a rails app which enable you to fighttttt!!!!!!!!!!!!!
 
-* Ruby version
+To test it localy :
 
-* System dependencies
+`bundle install`
 
-* Configuration
+`rails db:create`
 
-* Database creation
+`rails db:migrate`
 
-* Database initialization
+`rails db:seed`
 
-* How to run the test suite
+`rails s`
 
-* Services (job queues, cache servers, search engines, etc.)
+http://localhost:3000/
 
-* Deployment instructions
+Or you can check our on production app (whitout permanent active storage service):
 
-* ...
+https://project-contrat.herokuapp.com/
+
+You can check the tests (model and controller) : 
+
+`rspec`
+
