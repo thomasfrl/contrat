@@ -28,13 +28,10 @@ RSpec.describe FightsController, type: :controller do
   # This should return the minimal set of attributes required to create a valid
   # Fight. As you add validations to Fight, be sure to
   # adjust the attributes here as well.
-  let(:valid_attributes) {
-    skip("Add a hash of attributes valid for your model")
-  }
+  let(:valid_attributes)  {FactoryBot.attributes_for(:fight) }
 
-  let(:invalid_attributes) {
-    skip("Add a hash of attributes invalid for your model")
-  }
+  fighter = FactoryBot.create(:fighter)
+  let(:invalid_attributes) {{fighter_1_id: fighter.id, fighter_2_id: fighter.id}}
 
   # This should return the minimal set of values that should be in the session
   # in order to pass any filters (e.g. authentication) defined in
@@ -69,12 +66,12 @@ RSpec.describe FightsController, type: :controller do
     context "with valid params" do
       it "creates a new Fight" do
         expect {
-          post :create, params: {fight: valid_attributes}, session: valid_session
+          post :create, params: {fight: {fighter_1_id: FactoryBot.create(:fighter).id, fighter_2_id: FactoryBot.create(:fighter).id }}, session: valid_session
         }.to change(Fight, :count).by(1)
       end
 
       it "redirects to the created fight" do
-        post :create, params: {fight: valid_attributes}, session: valid_session
+        post :create, params: {fight: {fighter_1_id: FactoryBot.create(:fighter).id, fighter_2_id: FactoryBot.create(:fighter).id }}, session: valid_session
         expect(response).to redirect_to(Fight.last)
       end
     end

@@ -19,7 +19,7 @@ end
 
 4.times do
   img = get_random_image_avatar
-  fighter = Fighter.create!(name: Faker::Name.first_name, life: rand(7)+2, attack: rand(3)+1, xp: 0)
+  fighter = Fighter.create!(name: Faker::Name.first_name + Faker::Name.last_name, life: rand(7)+2, attack: rand(3)+1, xp: 0)
   fighter.avatar.attach(io: File.open(img[0]), filename: img[1])
 
 end
